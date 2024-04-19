@@ -17,6 +17,8 @@ int main()
 
   //input parameter  
 
+
+
   //variable
   4dNumVarArray x(myenv,N);
   4dNumVarArray y(myenv,N);
@@ -24,6 +26,8 @@ int main()
   IloNumVarArray B(myenv, D, 0, IloInfinity, ILOFLOAT);
   3DNumVarArray VisTruck(myenv, D);
   3DNumVarArray VisDrone(myenv, D);
+  2DNumVarArray levelTruck(myenv,N);
+  3DNumVarArray levelDrone(myenv,)
   
 
   // 2
@@ -67,6 +71,12 @@ int main()
   }
 
   //6
+  for (int i = 0; i < K;i++)
+  {
+    VisTruck[i] = IloNumVarArray(myenv, N, 0, IloInfinity, ILOFLOAT);
+  }
+
+  //7
   for (int i = 0; i < D;i++)
   {
     VisDrone[i]=2dNumVarArray(myenv,R);
@@ -76,10 +86,7 @@ int main()
     }
   }
 
-  for (int i = 0; i < K;i++)
-  {
-    VisTruck[i] = IloNumVarArray(myenv, N, 0, IloInfinity, ILOFLOAT);
-  }
+  
 
   //7
   for (int i = 0; i < K;i++)
@@ -166,7 +173,7 @@ int main()
 
   //11
   for (int i = 0; i < D;i++)
-  {
+  { 
       for (int j = 0; j < R;j++)
       {
          IloExpr ifExpr(myenv);
@@ -191,13 +198,19 @@ int main()
   {
       for (int j = 0; j < R;j++)
       {
-          IloExpor leftExpr(myenv);
+          IloExpr leftExpr(myenv);
           for (int k = 0; k < N;k++)
           {
               leftExpr += y[i][j][0][k];
           }
       }
       mymodel.add(IloRange(myenv,0,leftExpr,1));
+  }
+
+  //13
+  for(int i=0;i<K;i++)
+  {
+    
   }
 
 }
