@@ -1,5 +1,12 @@
 from docplex.mp.model import Model
+
+
 milp_model= Model(name = "milp")
+
+#Parameter
+delta =None
+
+
 x=milp_model.binary_var(name='x')
 y=milp_model.continuous_var(name='y')
 z=milp_model.integer_var(name='z',lb=0)
